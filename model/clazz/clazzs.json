@@ -1,0 +1,32 @@
+loadData([{
+	"id":2001,
+	"name":"一年一班",
+	"amount":"12",
+	"header":"基德",
+	"monitor":"保罗"
+},{
+	"id":2002,
+	"name":"二年二班",
+	"amount":"10",
+	"header":"科比",
+	"monitor":"韦德"
+
+},{
+	"id":2003,
+	"name":"三年一班",
+	"amount":"8",
+	"header":"麦迪",
+	"monitor":"安东尼"
+},{
+	"id":2004,
+	"name":"四年一班",
+	"amount":"9",
+	"header":"邓肯",
+	"monitor":"詹姆斯"
+},{
+	"id":2005,
+	"name":"五年一班",
+	"amount":"9",
+	"header":"奥尼尔",
+	"monitor":"霍华德"
+}]);

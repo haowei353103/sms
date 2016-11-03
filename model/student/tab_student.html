@@ -1,0 +1,103 @@
+<style type="text/css">
+	th{
+		background:#99F;
+		height:24px;}
+	.hiddenTr{ display:none; }
+</style>
+<script type="text/javascript">
+$(function(){
+	//跨域
+	var url = "http://172.16.20.40:80/web1601/sms_02/model/student/students.json";
+	$.ajax(url,{
+		dataType:"jsonp",
+		jsonp:"jsonp",
+		jsonpCallback:"loadData"
+	});
+	//为全选绑定事件  change
+	$(".opt_btns :checkbox").off("change");
+	$(".opt_btns :checkbox").change(function(){
+		if($(this).prop("checked")){
+			$("#stuTbl td :checkbox").prop("checked","checked");
+		}else{
+			$("#stuTbl td :checkbox").prop("checked","");
+		}
+	});
+	//为按钮绑定事件
+	$(".opt_btns button").off("click");
+	$(".opt_btns button").click(function(){
+		//opt按钮中的文字
+		var opt = $(this).text();
+		switch(opt){
+			case "添加":
+				$(".tab_content").load("model/student/addStudent.html");
+			break;
+			case "修改":
+				var id=$("#stuTbl :checkbox:checked").map(function(index,item){return item.value;}).get(0);
+				console.log(id);
+			break;
+			case "删除":
+			
+			break;
+		}
+	});
+	
+});
+//jsonp的回调函数，用于处理获取的数据
+function loadData(data){
+	//清空tbody中的原有信息
+	$("#stuTbl tbody tr").remove(":not(:first)");
+	data.forEach(function(item){
+		//克隆行（结构）
+		var newTr = $(".hiddenTr").clone().removeClass("hiddenTr");
+		//将内容填充到行中
+		newTr.find(":checkbox").val(item.id);
+		newTr.children().eq(1).text(item.name);
+		newTr.children().eq(2).text(item.className);
+		newTr.children().eq(3).text(item.gender);
+		newTr.children().eq(4).text(item.grade);
+		//将处理好的行追加到tbody上
+		$("#stuTbl tbody").append(newTr);
+		
+	});
+}
+</script>
+<!--学生管理-->
+			<div class="inner">
+				<div class="selects">
+					<select name="" id="">
+						<option value="name">姓名</option>
+						<option value="clazz">班级</option>
+						<option value="grade">成绩</option>
+					</select>
+					<input type="text">
+					<input type="submit" value="search">
+				</div>
+				<table id="stuTbl">
+					<thead>
+						<tr>
+							<th>选择</th>
+							<th>姓名</th>
+							<th>班级</th>
+							<th>性别</th>
+							<th>分数</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="hiddenTr">
+							<td>
+				<input type="checkbox" >
+							</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="opt_btns">
+					<input type="checkbox">
+					<button>添加</button>
+					<button>修改</button>
+					<button>删除</button>
+				</div>
+			</div>

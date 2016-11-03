@@ -1,0 +1,31 @@
+loadData([{
+	"id":1001,
+	"name":"库里",
+	"gender":"男",
+	"className":"一年一班",
+	"grade":"90"
+},{
+	"id":1002,
+	"name":"哈登",
+	"gender":"女",
+	"className":"二年一班",
+	"grade":"89"
+},{
+	"id":1003,
+	"name":"杜兰特",
+	"gender":"女",
+	"className":"三年一班",
+	"grade":"90"
+},{
+	"id":1004,
+	"name":"格里芬",
+	"gender":"女",
+	"className":"四年一班",
+	"grade":"90"
+},{
+	"id":1005,
+	"name":"考辛斯",
+	"gender":"男",
+	"className":"五年一班",
+	"grade":"90"
+}]);
